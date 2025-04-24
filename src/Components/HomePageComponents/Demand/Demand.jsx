@@ -1,6 +1,7 @@
 import React from 'react';
 import { Laptop, Users, BookOpen } from 'lucide-react'
 import image from '../../../assets/Screenshot 2025-04-20 201742.png'
+import { Link } from 'react-router-dom';
 export default function Demand() {
   return (
     <section className="bg-blue-500 w-full h-[650px] overflow-hidden relative">
@@ -37,12 +38,12 @@ export default function Demand() {
               Do you want to move on next step? Choose your most popular learning mentors, it will help you to achieve your professional goals.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+              <Link to='/signUp' className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
                 Register Now
-              </button>
-              <button className="bg-white hover:bg-gray-100 text-gray-900 font-medium py-3 px-6 rounded-lg transition duration-300">
+              </Link>
+              <Link to='/login' className="bg-white hover:bg-gray-100 text-gray-900 font-medium py-3 px-6 rounded-lg transition duration-300">
                 Sign In
-              </button>
+              </Link>
             </div>
           </div>
         </div>

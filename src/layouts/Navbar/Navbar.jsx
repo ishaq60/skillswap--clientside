@@ -10,6 +10,7 @@ import MobileNav from "./NavbarRelated/MobileNav";
 
 import useAuth from "../../Hooks/UseAuth";
 import CartButton from "../../Components/CartButton";
+import UseEnroll from "../../Hooks/UseEnroll";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +18,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const profileRef = useRef(null);
   const { user, logOut } = useAuth();
-
+  const [enrolecart]=UseEnroll()
+  console.log(enrolecart)
   const toggleDropdown = (dropdownName) => {
     setOpenDropdown(openDropdown === dropdownName ? null : dropdownName);
   };
@@ -142,7 +144,9 @@ export default function Navbar() {
         
         {/* Cart item count badge */}
         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-          
+         {
+          enrolecart?.length
+         }
         </span>
         
         {/* Animation ring on click */}

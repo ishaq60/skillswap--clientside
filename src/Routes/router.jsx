@@ -5,8 +5,11 @@ import Login from "../Pages/login/Login";
 import CourseDetails from "../Components/CoursesDetails/CoursesDetails";
 import PaymentPage from "../Components/PaymentPage";
 import SignUp from "../Pages/SignUp/Signup";
-import CouresePage from "../Pages/Scourse/Courese";
+
 import CoursePage from "../Components/CoursesPage/CoursePage";
+import MentorDetails from "../Components/MentorDetails";
+
+import MentorContactPage from "../Components/Contact/MentorContactPage";
 // import Courese from "../Pages/Scourse/Courese";
 // import CouresePage from "../Pages/Scourse/Courese";
 
@@ -46,7 +49,7 @@ const router = createBrowserRouter([
         path: '/payment/:id',
         element: <PaymentPage />,
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:5000/courses/${params.id}`);
+          const res = await fetch(`http://localhost:5000/mentorlist/${params.id}`);
           if (!res.ok) {
             throw new Response('Failed to load course', { status: res.status });
           }
@@ -63,6 +66,16 @@ const router = createBrowserRouter([
       
       }
 ,      
+{
+path:'/mentorDetails/:id',
+element:<MentorDetails/>,
+
+
+},
+{
+path:'/contactpage',
+element:<MentorContactPage/>
+},
 
 
       {

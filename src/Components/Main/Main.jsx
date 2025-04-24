@@ -26,7 +26,12 @@ const Main = () => {
         pauseOnHover
         theme="light" // or "dark"
       />
-            <Footer/>
+      <div className='mb-24'>
+        
+     {
+        noheaderfooter || <Footer/>
+     }
+      </div>
         </div>
     );
 };

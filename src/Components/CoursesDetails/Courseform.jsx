@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/UseAuth";
-
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
+import { useMutation } from '@tanstack/react-query';
+import { toast } from "react-toastify";
 const Courseform = ({ course }) => {
+ 
   const { user } = useAuth();
+  const axiosPublic=UseAxiosPublic()
   console.log(course);
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    handleSubmit,reset
+    
   } = useForm();
+
+  const mutation=useMutation({
+    mutationFn:(submitdata)=>{
+return axiosPublic.post('/enroll',submitdata)
+    },
+    onSuccess:(res)=>{
+      console.log('Course Add to cart successfully',res.data)
+      toast.success('Course Add to cart successfully')
+      reset()
+    
+    },
+    onError:(error)=>{
+      console.error('Error submitting course from',error)
+    }
+  })
+
 
   const onSubmit = (data) => {
     console.log(data);
@@ -29,6 +49,9 @@ const Courseform = ({ course }) => {
       thumbnail: course?.thumbnail,
     };
     console.log(submitdata)
+    mutation.mutate(submitdata)
+  
+    
   };
 
   return (
@@ -53,6 +76,7 @@ const Courseform = ({ course }) => {
           <input
             {...register("email", { required: true })}
             type="email"
+            defaultValue={user?.email}
             placeholder="Your email address"
             className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

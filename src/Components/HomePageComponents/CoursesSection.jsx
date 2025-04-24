@@ -4,12 +4,15 @@ import { Star, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import UseCart from '../../Hooks/UseCart';
+import UseEnroll from '../../Hooks/UseEnroll';
 
 export default function CoursesSection() {
   const [activeTab, setActiveTab] = useState('All');
   const [activePage, setActivePage] = useState(0);
   const [data] = UseCart();
-  console.log(data)
+  const [enrolecart]=UseEnroll()
+  console.log(enrolecart)
+
   const categories = ['All', 'Web Design', 'Programming', 'AI', 'Marketing', 'Language'];
 
   const filteredCourses = activeTab === 'All'
