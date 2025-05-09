@@ -10,7 +10,7 @@ const Main = () => {
     const location=useLocation()
  
     const noheaderfooter=location.pathname.includes('login') ||
-     location.pathname.includes('signup')
+     location.pathname.includes('signup')|| location.pathname.includes('dashboard')
     return (
         <div>
            {noheaderfooter|| <Navbar/>}

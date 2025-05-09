@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Menu, ShoppingCart, X } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import NavCourse from "./NavbarRelated/NavCourse";
@@ -123,7 +123,7 @@ export default function Navbar() {
             <NavItem text="Contact" />
           </div>
           <div className="ml-24">
-      <button 
+      <Link to='/dashboard' 
         className={`
           relative flex items-center justify-center
           w-12 h-12 rounded-full 
@@ -153,7 +153,7 @@ export default function Navbar() {
         {isClicked && (
           <span className="absolute w-full h-full rounded-full animate-ping bg-blue-400 opacity-30"></span>
         )}
-      </button>
+      </Link>
     </div>
           {/* User Auth Area */}
           {user ? (
